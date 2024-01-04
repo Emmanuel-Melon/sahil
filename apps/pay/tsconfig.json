@@ -1,15 +1,14 @@
 {
-    "extends": "tsconfig/base.json",
-    "compilerOptions": {
-      "baseUrl": ".",
-      "rootDirs": ["src"],
-      "outDir": "dist",
-      "lib": ["es2020"],
-      "target": "es2020",
-      "module": "esnext",
-      "moduleResolution": "node",
-      "esModuleInterop": true,
-      "types": ["node"]
-    },
-    "exclude": ["node_modules", "dist"]
-  }
+  "extends": "tsconfig/base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDirs": ["src"],
+    "outDir": "dist",
+    "types": ["node"],
+    "strict": false,
+    "target": "ES2015",
+    "lib": ["ESNext", "ES6", "ES2015"],
+    "moduleResolution": "node"
+  },
+  "exclude": ["node_modules", "dist"]
+}

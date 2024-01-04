@@ -5,9 +5,9 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "compile": "tsc --project tsconfig.json",
+    "compile": "tsc -p tsconfig.json",
     "clean": "rm -r ./dist",
-    "dev": "npm run compile && nodemon ./dist/index.js"
+    "dev": "npm run compile && node --experimental-modules ./dist/index.js"
   },
   "devDependencies": {
     "@types/express": "^4.17.20",
