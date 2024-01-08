@@ -20,12 +20,42 @@ services:
       dockerfile: ./infra/docker/Dockerfile.api
     image: sahil-api
     restart: always
-    depends_on: [database]
     ports:
-      - '3001:3001'
+      - '8000:8000'
+    working_dir: /usr/src/app
+    volumes:
+      - ./app:/usr/src/app  
+    environment:
+      - NODE_ENV=dev
+      - DATABASE_URL=postgresql://admin:adminpd@postgres:5432/sahil_api
+      - REDIS_URL=redis://redis:6379
+    depends_on: 
+      - sahildatabase
+      - sahilredis
 
-  database:
-    container_name: database
-    image: postgres
+  # REDIS    
+  sahilredis:
+    container_name: sahil-redis
+    image: redis:6.0-alpine
+    ports: 
+      - '6379:6379'
+    volumes:
+      - sahilredisdata:/data
+
+  # POSTGRESQL    
+  sahildatabase:
+    image: postgres:15
+    container_name: sahil-database
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: adminpd
+      POSTGRES_DB: sahil_api
     ports:
       - '5432:5432'
+    volumes:
+    - sahilpgdata:/var/lib/postgresql/data
+
+volumes:
+  sahilpgdata:
+  sahilredisdata:

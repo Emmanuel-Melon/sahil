@@ -1,6 +1,17 @@
 {
+  "name": "sahil",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
+    "build-website": "turbo run build --filter=website",
+    "dev-website": "turbo run dev --filter=website",
+    "build-api": "turbo run build --filter=api",
+    "dev-api": "turbo run dev --filter=api",
+    "build-agent": "turbo run build --filter=agent",
+    "dev-agent": "turbo run dev --filter=agent",
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
@@ -13,10 +24,5 @@
     "prettier": "^2.5.1",
     "turbo": "latest"
   },
-  "name": "sahil",
-  "packageManager": "yarn@1.22.19",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+  "packageManager": "yarn@1.22.19"
 }
